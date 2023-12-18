@@ -68,7 +68,7 @@ class GenericUdpInstance extends InstanceBase {
 			})
 
 			this.udp.on('data', (msg) => {
-				const newValue = getNewVariableValue(this,msg)
+				const newValue = getNewVariableValue(this, msg)
 				// this.log('info', 'Get New Data: ' + newValue)
 				// this.setVariableValues({ lastMessage: msg.toString('utf-8', 0, msg.length) })
 				this.setVariableValues(newValue)
@@ -83,7 +83,6 @@ class GenericUdpInstance extends InstanceBase {
 			this.updateStatus(InstanceStatus.BadConfig)
 		}
 	}
-
 }
 
 runEntrypoint(GenericUdpInstance, [])
