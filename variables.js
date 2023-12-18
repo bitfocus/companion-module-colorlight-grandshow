@@ -1,7 +1,15 @@
-module.exports = async function (self) {
-	self.setVariableDefinitions([
-		{ variableId: 'variable1', name: 'My first variable' },
-		{ variableId: 'variable2', name: 'My second variable' },
-		{ variableId: 'variable3', name: 'Another variable' },
-	])
+export function getVariables(self) {
+	const variables = []
+
+	variables.push({
+		name: 'The last received udp message',
+		variableId: 'lastMessage',
+	})
+
+	variables.push({
+		name: 'The last received udp timestamp',
+		variableId: 'lastTimestamp',
+	})
+
+	return variables
 }
