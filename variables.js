@@ -11,5 +11,15 @@ export function getVariables(self) {
 		variableId: 'lastTimestamp',
 	})
 
+	variables.push({
+		name: '当前播放的场景名称',
+		variableId: 'currentSceneName',
+	})
+
+	variables.push({
+		name: '黑屏状态',
+		variableId: 'blackState',
+	})
+
 	return variables
 }

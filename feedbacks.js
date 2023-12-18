@@ -48,5 +48,16 @@ export function GetFeedbacks(self) {
 			}
 		},
 	}
+
+	// feedbacks['SceneName'] = {
+	// 	type: 'advanced',
+	// 	name: 'current scene name',
+	// 	description: '获取当前播放或暂停的场景名称并显示在按钮上。如果当前状态为停止播放，则显示“无”',
+	// 	options: [
+	// 		{
+
+	// 		}
+	// 	]
+	// }
 	return feedbacks
 }
