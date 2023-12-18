@@ -1,33 +1,63 @@
-const { combineRgb } = require('@companion-module/base')
+import { combineRgb } from '@companion-module/base'
+import { log } from 'console'
 
-module.exports = async function (self) {
-	self.setFeedbackDefinitions({
-		ChannelState: {
-			name: 'Example Feedback',
-			type: 'boolean',
-			label: 'Channel State',
-			defaultStyle: {
-				bgcolor: combineRgb(255, 0, 0),
-				color: combineRgb(0, 0, 0),
+export function GetFeedbacks(self) {
+	const feedbacks = {}
+
+	const ColorWhite = combineRgb(255, 255, 255)
+	const ColorBlack = combineRgb(0, 0, 0)
+	const ColorRed = combineRgb(200, 0, 0)
+	const ColorGreen = combineRgb(0, 200, 0)
+	const ColorOrange = combineRgb(255, 102, 0)
+
+	feedbacks['ScreenBlack'] = {
+		type: 'advanced',
+		name: 'Screen Black Status',
+		description: 'If Black status change, change the style of the button',
+		options: [
+			{
+				type: 'colorpicker',
+				label: 'Foreground color (Black)',
+				id: 'fg',
+				default: ColorWhite,
 			},
-			options: [
-				{
-					id: 'num',
-					type: 'number',
-					label: 'Test',
-					default: 5,
-					min: 0,
-					max: 10,
-				},
-			],
-			callback: (feedback) => {
-				console.log('Hello world!', feedback.options.num)
-				if (feedback.options.num > 5) {
-					return true
-				} else {
-					return false
-				}
+			{
+				type: 'colorpicker',
+				label: 'Background color (Black)',
+				id: 'bg',
+				default: ColorRed,
 			},
+			{
+				type: 'colorpicker',
+				label: 'Foreground color (unBlack)',
+				id: 'fg_',
+				default: ColorWhite,
+			},
+			{
+				type: 'colorpicker',
+				label: 'Background color (unBlack)',
+				id: 'bg_',
+				default: ColorGreen,
+			},
+		],
+		callback: (feedback) => {
+			if (self.states.blackState) {
+				return { color: feedback.options.fg, bgcolor: feedback.options.bg }
+			} else {
+				return { color: feedback.options.fg_, bgcolor: feedback.options.bg_ }
+			}
 		},
-	})
+	}
+
+	// feedbacks['SceneName'] = {
+	// 	type: 'advanced',
+	// 	name: 'current scene name',
+	// 	description: '获取当前播放或暂停的场景名称并显示在按钮上。如果当前状态为停止播放，则显示“无”',
+	// 	options: [
+	// 		{
+
+	// 		}
+	// 	]
+	// }
+	return feedbacks
 }
