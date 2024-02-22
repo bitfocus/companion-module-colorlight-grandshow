@@ -3,7 +3,7 @@ import { ConfigFields } from './config.js'
 import { getActions } from './actions.js'
 import { getVariables } from './variables.js'
 import { GetFeedbacks } from './feedbacks.js'
-import { getNewVariableValue, parseJson } from './Utils/parseJson.js'
+import { parseJson } from './Utils/parseJson.js'
 
 class GenericUdpInstance extends InstanceBase {
 	async init(config) {
@@ -68,12 +68,9 @@ class GenericUdpInstance extends InstanceBase {
 			})
 
 			this.udp.on('data', (msg) => {
-				const newValue = getNewVariableValue(this, msg)
-				// this.log('info', 'Get New Data: ' + newValue)
-				// this.setVariableValues({ lastMessage: msg.toString('utf-8', 0, msg.length) })
-				this.setVariableValues(newValue)
-				// this.log('info', 'Get Data: ' + msg.toString('utf-8', 0, msg.length))
-				// parseJson(this, msg)
+				this.setVariableValues({ lastMessage: msg.toString('utf-8', 0, msg.length) })
+				this.log('info', 'Get Data: ' + msg.toString('utf-8', 0, msg.length))
+				parseJson(this, msg)
 			})
 
 			this.udp.on('status_change', (status, message) => {
