@@ -1,9 +1,9 @@
 {
-	"id": "Colorlight-GrandShow",
-	"name": "Golorlight-GrandShow",
+	"id": "colorlight-grandshow",
+	"name": "colorlight-grandshow",
 	"shortname": "GrandShow",
 	"description": "GrandShow External Contorl",
-	"version": "1.0.2",
+	"version": "0.0.0",
 	"license": "MIT",
 	"repository": "git+https://github.com/bitfocus/companion-module-colorlight-grandshow.git",
 	"bugs": "https://github.com/bitfocus/companion-module-colorlight-grandshow/issues",
@@ -13,11 +13,11 @@
 			"email": "wuwei@lednets.com"
 		}
 	],
-	"legacyIds": [],
+	"legacyIds": ["Colorlight-GrandShow"],
 	"runtime": {
 		"type": "node18",
 		"api": "nodejs-ipc",
-		"apiVersion": "1.0.0",
+		"apiVersion": "0.0.0",
 		"entrypoint": "../index.js"
 	},
 	"manufacturer": "Colorlight",

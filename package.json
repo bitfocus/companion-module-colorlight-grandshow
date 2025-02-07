@@ -1,6 +1,6 @@
 {
 	"name": "colorlight-grandshow",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"main": "index.js",
 	"type": "module",
 	"prettier": "@companion-module/tools/.prettierrc.json",
